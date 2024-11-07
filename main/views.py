@@ -14,13 +14,15 @@ def link_views(request):
 
 
 def link_create(request):
+    links = Link.objects.all()
+    context = {'links': links}
     if request.method == 'POST':
-        url = request.POST['link']
+        url = request.POST['url']
         link = Link.objects.create(url=url)
         img = create_qrcode(request, link)
         link.img = img
         link.save()
-        return redirect('main:link_views')
+        return redirect('main:links')
 
-    return render(request, 'main/links.html')
+    return render(request, 'main/link.html', {'links': links})
 
