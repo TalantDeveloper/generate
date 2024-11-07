@@ -8,7 +8,7 @@ def welcome(request):
 
 
 def link_views(request):
-    links = Link.objects.all()
+    links = Link.objects.all().order_by('-id')
     context = {'links': links}
     return render(request, 'main/links.html', context)
 
@@ -23,6 +23,4 @@ def link_create(request):
         link.img = img
         link.save()
         return redirect('main:links')
-
-    return render(request, 'main/link.html', {'links': links})
-
+    return render(request, 'main/links.html', context)
