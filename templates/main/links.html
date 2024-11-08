@@ -26,50 +26,28 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-
+            <!-- Category Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Link Generate</h1>
+                    <div class="row g-4">
                         {% for link in links %}
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid border rounded"
-                                             src="/media/img/{{ link.id }}.png" alt=""
-                                             style="width: 80px; height: 80px;">
-                                        <div class="text-start ps-4">
-                                            <h5 class="mb-3">
-                                                {{ link.url }}
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                        <div class="d-flex mb-3">
-                                            <a class="btn btn-primary" href="{{ link.img }}" style="margin-right: 10px;">
-                                                Ko'rish
-                                            </a>
-                                            <a class="btn btn-primary" href="{{ link.img }}" download="">
-                                                Yuklash
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                                <a class="cat-item rounded p-4" href="/media/img/{{ link.id }}.png" target="_blank">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                         src="/media/img/{{ link.id }}.png" alt=""
+                                         style="width: 150px; height: 150px;">
+                                    <h6 class="mb-3">{{ link.id }} - {{ link.url }}</h6>
+                                    <a class="btn btn-primary" href="{{ link.img }}" download="">
+                                        Yuklash
+                                    </a>
+                                </a>
                             </div>
                         {% endfor %}
-
-                        <a class="btn btn-outline-primary py-3 px-3"
-                           href="?page=">
-                            <<
-                        </a>
-                        <a class="btn btn-primary py-3 px-4" href="?page=">
-                        </a>
-                        <a class="btn btn-outline-primary py-3 px-3"
-                           href="?page=">
-                            >>
-                        </a>
                     </div>
                 </div>
             </div>
+            <!-- Category End -->
         </div>
     </div>
     <!-- Jobs End -->

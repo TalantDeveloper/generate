@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Link
+from modeltranslation.admin import TranslationAdmin
+from .models import Link, Generator
 
 
 class LinkAdmin(admin.ModelAdmin):
@@ -11,3 +12,8 @@ class LinkAdmin(admin.ModelAdmin):
 admin.site.register(Link, LinkAdmin)
 
 
+@admin.register(Generator)
+class GeneratorAdmin(TranslationAdmin):
+    list_display = ('id', 'name', 'img', 'created_at', 'updated_at')
+    list_display_links = ('id', 'name', 'img')
+    search_fields = ('id', 'name')

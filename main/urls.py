@@ -9,4 +9,9 @@ urlpatterns = [
 
     path('links/', views.link_views, name='links'),
     path('links/create/', views.link_create, name='link_create'),
+
+    path('generators/', views.generators_views, name='generators'),
+    path('generators/<int:pk>/', views.generator_view, name='generator'),
+
+    path('about/', views.about_view, name='about'),
 ]

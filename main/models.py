@@ -16,6 +16,7 @@ class Link(models.Model):
 class Generator(models.Model):
     name = models.CharField(max_length=100)
     content = RichTextUploadingField()
+    img = models.ImageField(upload_to='generate', null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

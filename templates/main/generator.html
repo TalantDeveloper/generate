@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Job Detail Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-8">
+                    <div class="d-flex align-items-center mb-5">
+                        <img class="flex-shrink-0 img-fluid border rounded" src="/media/generate/{{ generator.id }}.png"
+                             alt="img"
+                             style="width: 80px; height: auto;">
+                        <div class="text-start ps-4">
+                            <h3 class="mb-3">{{ generator.name }}</h3>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        {{ generator.content| safe }}
+                    </div>
+                    <div class="center">
+                        <div class="col-6 center">
+                            <a href="/media/generate/{{ generator.id }}.png" class="btn btn-primary w-100 center" download="">
+                                <i class="far fa-file text-white me-2"></i>
+                                Qr code download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                        <h4 class="mb-4">
+                            Jurnal haqida
+                        </h4>
+                        <p>
+                            <i class="fa fa-angle-right text-primary me-2"></i>
+                            Sana:
+                        </p>
+
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Turi: Jurnal</p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Joylashuv: Toshkent, O'zbekiston</p>
+                    </div>
+                    <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                        <h4 class="mb-4">
+                            Mutafakkir
+                        </h4>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>
+                            <a href="">
+                                Tahrir hay'ati
+                            </a>
+                        </p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>
+                            <a href="">
+                                Kuzatuv kengashi
+                            </a>
+                        </p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>
+                            <a href="">
+                                E'lonlar
+                            </a>
+                        </p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>
+                            <a href="">
+                                Jurnallar
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Job Detail End -->
+{% endblock %}

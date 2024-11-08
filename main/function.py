@@ -8,3 +8,11 @@ def create_qrcode(request, link):
     text = pyqrcode.create(message)
     text.png(f"{BASE_DIR}/media/img/{link.id}.png", scale=8)
     return f"/media/img/{link.id}.png"
+
+
+def generator_qrcode(generator):
+    message = f"{BASE_URL}/uz/generators/{generator.id}"
+    text = pyqrcode.create(message)
+    text.png(f"{BASE_DIR}/media/generate/{generator.id}.png", scale=8)
+    return f"/media/img/{generator.id}.png"
+

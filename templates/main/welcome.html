@@ -13,17 +13,17 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">
-                                    Malaka oshirish fakulteti
-                                </h1>
+                                <h3 class="display-3 text-white animated slideInDown mb-4">
+                                    Toshkent Davlat Stomatologiya Instituti
+                                </h3>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">
-                                    Toshkent Davlat Stomatologiya Instituti Malaka oshirish fakulteti
+                                    Kerakli ma'lumotlarni QR code orqali ifodalash
                                 </p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
-                                    Malaka oshirganlar
+                                <a href="{% url 'main:links' %}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
+                                    Link Generate
                                 </a>
-                                <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">
-                                    E'lonlar
+                                <a href="{% url 'main:generators' %}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">
+                                    Data Generate
                                 </a>
                             </div>
                         </div>
@@ -37,17 +37,17 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-10 col-lg-8">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">
-                                    Malaka oshirish fakulteti
-                                </h1>
+                                <h3 class="display-3 text-white animated slideInDown mb-4">
+                                    Toshkent Davlat Stomatologiya Instituti
+                                </h3>
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">
-                                    Toshkent Davlat Stomatologiya Instituti Malaka oshirish fakulteti
+                                    Kerakli ma'lumotlarni QR code orqali ifodalash
                                 </p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
-                                    Malaka oshirganlar
+                                <a href="{% url 'main:links' %}" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">
+                                    Link Generate
                                 </a>
-                                <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">
-                                    E'lonlar
+                                <a href="{% url 'main:generators' %}" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">
+                                    Data Generate
                                 </a>
                             </div>
                         </div>
@@ -58,205 +58,66 @@
     </div>
     <!-- Carousel End -->
 
+
+    <!-- Category Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Link Generate</h1>
+            <div class="row g-4">
+                {% for link in links %}
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="cat-item rounded p-4" href="/media/img/{{ link.id }}.png" target="_blank">
+                            <img class="flex-shrink-0 img-fluid border rounded"
+                                 src="/media/img/{{ link.id }}.png" alt=""
+                                 style="width: 150px; height: 150px;">
+                            <h6 class="mb-3">{{ link.id }}</h6>
+                            <p class="mb-0">{{ link.url }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+                <a class="btn btn-primary py-3 px-5" href="{% url 'main:links' %}">
+                    All Link Generate
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Category End -->
+
     <!-- Jobs Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                Malaka oshirganlar
+                Data Generate
             </h1>
             <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                 <div class="tab-content">
                     <div id="tab-1" class="tab-pane fade show p-0 active">
-
+                        {% for generator in generators %}
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                         <img class="flex-shrink-0 img-fluid border rounded"
-                                             src="123" alt=""
-                                             style="width: 80px; height: 100px;">
+                                             src="/media/generate/{{ generator.id }}.png" alt=""
+                                             style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">
-                                                Ergashov Botirjon
+                                                {{ generator.id }} - {{ generator.name }}
                                             </h5>
-                                            <span class="text-truncate me-3">
-                                                <i class="fa fa-file-archive text-primary me-2"></i>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, itaque?
-                                            </span>
-                                            <span class="text-truncate me-3">
-                                                <i class="far fa-calendar-alt text-primary me-2"></i>
-                                                Bitirgan: 06.11.1999
-                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
-                                            <a class="btn btn-primary" href="">
-                                                ko'rish
+                                            <a class="btn btn-primary" href="{% url 'main:generator' generator.id %}"
+                                               style="margin-right: 10px;">
+                                                Ko'rish
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded"
-                                         src="{% static 'img/com-logo-2.jpg' %}" alt=""
-                                         style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">
-                                            Marketing Manager
-                                        </h5>
-                                        <span class="text-truncate me-3">
-                                                <i class="fa fa-map-marker-alt text-primary me-2"></i>
-                                                New York, USA
-                                            </span>
-                                        <span class="text-truncate me-3">
-                                                <i class="far fa-clock text-primary me-2"></i>
-                                                Full Time
-                                            </span>
-                                        <span class="text-truncate me-0">
-                                                <i class="far fa-money-bill-alt text-primary me-2"></i>
-                                                $123 - $456
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i></a>
-                                        <a class="btn btn-primary" href="">Apply Now</a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>
-                                        Date Line: 01 Jan, 2045
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded"
-                                         src="{% static 'img/com-logo-3.jpg' %}" alt=""
-                                         style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">
-                                            Product Designer
-                                        </h5>
-                                        <span class="text-truncate me-3">
-                                                <i class="fa fa-map-marker-alt text-primary me-2"></i>
-                                                New York, USA
-                                            </span>
-                                        <span class="text-truncate me-3">
-                                                <i class="far fa-clock text-primary me-2"></i>
-                                                Full Time
-                                            </span>
-                                        <span class="text-truncate me-0">
-                                                <i class="far fa-money-bill-alt text-primary me-2"></i>
-                                                $123 - $456
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">
-                                            Apply Now
-                                        </a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>
-                                        Date Line: 01 Jan, 2045
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded"
-                                         src="{% static 'img/com-logo-4.jpg' %}" alt=""
-                                         style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">
-                                            Creative Director
-                                        </h5>
-                                        <span class="text-truncate me-3">
-                                                <i class="fa fa-map-marker-alt text-primary me-2"></i>
-                                                New York, USA
-                                            </span>
-                                        <span class="text-truncate me-3">
-                                                <i class="far fa-clock text-primary me-2"></i>
-                                                Full Time
-                                            </span>
-                                        <span class="text-truncate me-0">
-                                                <i class="far fa-money-bill-alt text-primary me-2"></i>
-                                                $123 - $456
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">
-                                            Apply Now
-                                        </a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>
-                                        Date Line: 01 Jan, 2045
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-item p-4 mb-4">
-                            <div class="row g-4">
-                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid border rounded"
-                                         src="{% static 'img/com-logo-5.jpg' %}" alt=""
-                                         style="width: 80px; height: 80px;">
-                                    <div class="text-start ps-4">
-                                        <h5 class="mb-3">
-                                            Wordpress Developer
-                                        </h5>
-                                        <span class="text-truncate me-3">
-                                                <i class="fa fa-map-marker-alt text-primary me-2"></i>
-                                                New York, USA
-                                            </span>
-                                        <span class="text-truncate me-3">
-                                                <i class="far fa-clock text-primary me-2"></i>
-                                                Full Time
-                                            </span>
-                                        <span class="text-truncate me-0">
-                                                <i class="far fa-money-bill-alt text-primary me-2"></i>
-                                                $123 - $456
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                    <div class="d-flex mb-3">
-                                        <a class="btn btn-light btn-square me-3" href="">
-                                            <i class="far fa-heart text-primary"></i>
-                                        </a>
-                                        <a class="btn btn-primary" href="">
-                                            Apply Now
-                                        </a>
-                                    </div>
-                                    <small class="text-truncate">
-                                        <i class="far fa-calendar-alt text-primary me-2"></i>
-                                        Date Line: 01 Jan, 2045
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary py-3 px-5" href="">
-                            Browse More Jobs
+                        {% endfor %}
+                        <a class="btn btn-primary py-3 px-5" href="{% url 'main:generators' %}">
+                            All Data Generate
                         </a>
                     </div>
                 </div>
@@ -265,94 +126,6 @@
     </div>
     <!-- Jobs End -->
 
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <h1 class="text-center mb-5">
-                Our Clients Say!!!
-            </h1>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item bg-light rounded p-4">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p>
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
-                        diam
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-1.jpg' %}"
-                             style="width: 50px; height: 50px;" alt="">
-                        <div class="ps-3">
-                            <h5 class="mb-1">
-                                Client Name
-                            </h5>
-                            <small>
-                                Profession
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item bg-light rounded p-4">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p>
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
-                        diam
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-2.jpg' %}"
-                             style="width: 50px; height: 50px;">
-                        <div class="ps-3">
-                            <h5 class="mb-1">
-                                Client Name
-                            </h5>
-                            <small>
-                                Profession
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item bg-light rounded p-4">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p>
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
-                        diam
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-3.jpg' %}"
-                             style="width: 50px; height: 50px;">
-                        <div class="ps-3">
-                            <h5 class="mb-1">
-                                Client Name
-                            </h5>
-                            <small>
-                                Profession
-                            </small>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item bg-light rounded p-4">
-                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                    <p>
-                        Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
-                        diam
-                    </p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-4.jpg' %}"
-                             style="width: 50px; height: 50px;">
-                        <div class="ps-3">
-                            <h5 class="mb-1">
-                                Client Name
-                            </h5>
-                            <small>
-                                Profession
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
+    
 
 {% endblock %}
